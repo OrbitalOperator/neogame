@@ -1,0 +1,9 @@
+{
+  "name": "neogame-web-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/neogame-web-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["neogame-web"],
+  "// targets": "to see all targets run: nx show project neogame-web-e2e --web",
+  "targets": {}
+}
