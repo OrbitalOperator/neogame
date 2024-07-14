@@ -1,5 +1,26 @@
 {
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "nxCloudAccessToken": "MzNlMDE4YTQtMGZjNC00ODUyLWE2OGYtNTJhYjhjNDk0YTU4fHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "MzNlMDE4YTQtMGZjNC00ODUyLWE2OGYtNTJhYjhjNDk0YTU4fHJlYWQtd3JpdGU=",
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "plugin": "@nx/rollup/plugin",
+      "options": {
+        "buildTargetName": "build"
+      }
+    }
+  ],
+  "generators": {
+    "@nx/react": {
+      "library": {
+        "unitTestRunner": "none"
+      }
+    }
+  }
 }
