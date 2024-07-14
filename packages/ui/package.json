@@ -1,4 +1,25 @@
 {
   "name": "@sassy-boxes/ui",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "module": "./index.esm.js",
+  "type": "module",
+  "main": "./index.esm.js",
+  "description": "Sassy Stack Repositories - UI Library/Design System made of react components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sassy-stack-repositories/one-more-pull.git"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "nx",
+    "storybook"
+  ],
+  "author": "Nicolas GORAJ",
+  "license": "GPL-3.0-or-later",
+  "types": "./index.esm.d.ts",
+  "bugs": {
+    "url": "https://github.com/sassy-stack-repositories/one-more-pull/issues"
+  },
+  "homepage": "https://github.com/sassy-stack-repositories/one-more-pull#readme"
 }
