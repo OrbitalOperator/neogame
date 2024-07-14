@@ -17,6 +17,9 @@
   ],
   "author": "Nicolas GORAJ",
   "license": "GPL-3.0-or-later",
+  "publishConfig": {
+    "access": "public"
+  },
   "types": "./index.esm.d.ts",
   "bugs": {
     "url": "https://github.com/sassy-stack-repositories/one-more-pull/issues"
