@@ -39,7 +39,7 @@ jobs:
         shell: bash
 
       - name: Build ui project
-        run: pnpm exec nx run ui:build-storybook
+        run: pnpm exec nx run ui:build
 
       - name: Release
         run: pnpm exec nx run ui:nx-release-publish --skip-publish
