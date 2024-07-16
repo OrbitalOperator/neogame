@@ -41,12 +41,15 @@ jobs:
       - name: Build ui project
         run: pnpm exec nx run ui:build
 
+      - run: git config --global user.email "github@goraj.fr"
+      - run: git config --global user.name "Nicolas GORAJ"
+
       - name: Release
-        run: pnpm exec nx run ui:nx-release-publish --skip-publish
+        run: pnpm exec nx release --skip-publish
         shell: bash
 
       - name: Publish
-        run: pnpm exec nx run ui:nx-release-publish
+        run: pnpm exec nx release publish
         shell: bash
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN  }}
