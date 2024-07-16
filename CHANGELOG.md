@@ -1,3 +1,19 @@
+## 0.4.0 (2024-07-16)
+
+
+### 🚀 Features
+
+- empty 4
+- **ci:** it's gonna work someday
+
+### 🩹 Fixes
+
+- **ci:** empty 4
+
+### ❤️  Thank You
+
+- Nicolas GORAJ
+
 ## 0.3.0 (2024-07-16)
 
 
