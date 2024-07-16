@@ -38,6 +38,16 @@ jobs:
         run: pnpm install --frozen-lockfile
         shell: bash
 
-      - name: Publish packages
-        run: pnpm exec nx release publish --skip-publish
+      - name: Build ui project
+        run: pnpm exec nx run ui:build-storybook
+
+      - name: Release
+        run: pnpm exec nx run ui:nx-release-publish --skip-publish
         shell: bash
+
+      - name: Publish
+        run: pnpm exec nx run ui:nx-release-publish
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN  }}
+          NPM_CONFIG_PROVENANCE: true
