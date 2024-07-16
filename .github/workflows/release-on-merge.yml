@@ -1,0 +1,43 @@
+# ./.github/workflows/release-on-merge.yml
+name: Release after merge on main
+
+on:
+  pull_request:
+    branches: 
+      - main
+    types:
+      - closed
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # needed for provenance data generation
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        shell: bash
+
+      - name: Publish packages
+        run: pnpm exec nx release publish --skip-publish
+        shell: bash

@@ -58,5 +58,23 @@
         "linter": "eslint"
       }
     }
+  },
+  "release": {
+    "version": {
+      "conventionalCommits": true
+    },
+    "changelog": {
+      "workspaceChangelog": {
+        "createRelease": "github"
+      }
+    }
+  },
+  "targetDefaults": {
+    "nx-release-publish": {
+      "dependsOn": ["build"],
+      "options": {
+        "packageRoot": "dist/packages/{projectName}"
+      }
+    }
   }
 }
