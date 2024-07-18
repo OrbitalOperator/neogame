@@ -17,6 +17,7 @@
     "vite-plugin-solid": "catalog:"
   },
   "dependencies": {
-    "solid-js": "catalog:"
+    "solid-js": "catalog:",
+    "@ssromp/ui": "workspace:"
   }
 }
