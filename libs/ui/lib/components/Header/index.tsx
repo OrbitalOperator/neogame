@@ -1,6 +1,6 @@
-import { Component } from 'solid-js';
-import { Button } from '../Button';
-import styles from './styles.module.css';
+import { Component } from "solid-js";
+import { Button } from "../Button";
+import styles from "./styles.module.css";
 
 type User = {
   name: string;
@@ -15,7 +15,7 @@ interface HeaderProps {
 
 export const Header: Component<HeaderProps> = (props) => (
   <header>
-    <div class="wrapper">
+    <div class={styles.wrapper}>
       <div>
         <svg
           width="32"
@@ -43,7 +43,7 @@ export const Header: Component<HeaderProps> = (props) => (
       <div>
         {props.user ? (
           <>
-            <span class="welcome">
+            <span class={styles.welcome}>
               Welcome, <b>{props.user.name}</b>!
             </span>
             <Button size="small" onClick={props.onLogout} label="Log out" />
