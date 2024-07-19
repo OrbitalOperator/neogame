@@ -1,6 +1,6 @@
 import { Component, createSignal } from 'solid-js';
-import { Header } from './Header';
-import './page.css';
+import { Header } from '../Header';
+import styles from './styles.module.css';
 
 type User = {
   name: string;
@@ -65,8 +65,8 @@ export const Page: Component = () => {
           </a>
           .
         </p>
-        <div class="tip-wrapper">
-          <span class="tip">Tip</span> Adjust the width of the canvas with the{' '}
+        <div class={styles.tipWrapper}>
+          <span class={styles.tip}>Tip</span> Adjust the width of the canvas with the{' '}
           <svg
             width="10"
             height="10"

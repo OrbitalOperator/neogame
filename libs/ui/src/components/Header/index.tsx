@@ -1,6 +1,6 @@
 import { Component } from 'solid-js';
-import { Button } from './Button';
-import './header.css';
+import { Button } from '../Button';
+import styles from './styles.module.css';
 
 type User = {
   name: string;

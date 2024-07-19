@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
-import { Header } from './Header';
+import { Header } from './index';
 
 const meta = {
   title: 'Example/Header',
