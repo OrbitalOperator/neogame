@@ -1,14 +1,31 @@
 {
   "name": "@ssromp/ui",
-  "version": "0.0.0",
-  "description": "",
-  "type": "module",
+  "version": "0.1.0",
+  "author": "Nicolas GORAJ",
+  "description": "ui library made of SolidJs components",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "prepublishOnly": "pnpm run build"
   },
-  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "GPL-3.0-or-later",
+  "peerDependencies": {
+    "solid-js": "^1.8.11"
+  },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
     "@storybook/addon-essentials": "^8.2.4",
@@ -19,8 +36,8 @@
     "@storybook/testing-library": "^0.2.2",
     "@types/node": "^20.14.11",
     "glob": "^11.0.0",
-    "sass": "^1.70.0",
     "solid-devtools": "^0.29.2",
+    "solid-js": "^1.8.11",
     "storybook": "^8.2.4",
     "storybook-solidjs": "^1.0.0-beta.2",
     "storybook-solidjs-vite": "^1.0.0-beta.2",
@@ -30,7 +47,19 @@
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vite-plugin-solid": "^2.8.2"
   },
-  "dependencies": {
-    "solid-js": "^1.8.11"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sassy-stack-repositories/one-more-pull.git"
+  },
+  "keywords": [
+    "vite",
+    "solidjs",
+    "ui",
+    "library",
+    "components"
+  ],
+  "bugs": {
+    "url": "https://github.com/sassy-stack-repositories/one-more-pull/issues"
+  },
+  "homepage": "https://github.com/sassy-stack-repositories/one-more-pull#readme"
 }
