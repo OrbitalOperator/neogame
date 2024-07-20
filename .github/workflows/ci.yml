@@ -57,8 +57,10 @@ jobs:
         steps:
             - name: log value
               run: |
-                  echo ${{ needs.changed-files-yaml.outputs.neogame-web_any_changed }}
-                  echo ${{ needs.changed-files-yaml.outputs.ui_any_changed }}
+                  echo ${{ needs.changed-files.outputs }}
+                  echo ${{ needs.changed-files.outputs.changed-files-yaml }}
+                  echo ${{ needs.changed-files.outputs.neogame-web_changed-files-yaml }}
+                  echo ${{ needs.changed-files.outputs.ui_changed-files-yaml }}
 
     neogame-web:
         name: Run Neogame-CI
