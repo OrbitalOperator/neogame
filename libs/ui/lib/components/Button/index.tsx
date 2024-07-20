@@ -27,8 +27,8 @@ export interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button: Component<ButtonProps> = (props) => {
-    props = mergeProps({ size: 'small' as ButtonProps['size'] }, props);
+export const Button: Component<ButtonProps> = (_props) => {
+    const props = mergeProps({ size: 'small' as ButtonProps['size'] }, _props);
     const [local, rest] = splitProps(props, ['primary', 'size', 'backgroundColor', 'label']);
 
     return (

@@ -1,3 +1,2 @@
-#!/usr/bin/env sh
-
-npx lint-staged
+pnpm prettier . --write
+pnpm -r run lint

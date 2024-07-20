@@ -1,3 +1,3 @@
 {
-    "*": "pnpm prettier . --write"
+    "*": ["", "pnpm -r run lint"]
 }
