@@ -35,7 +35,7 @@ jobs:
                       ui:
                         - libs/ui/**
 
-            - name: Run neogame-ci on neogame or ui files changes
+            - name: Log changed files in apps/neogame-web
               if: ${{ steps.changed-files-yaml.outputs.neogame_web_any_changed == 'true' || steps.changed-files-yaml.outputs.ui_any_changed == 'true' }}
               env:
                   NEOGAME_WEB_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.neogame_web_all_changed_files }}
@@ -43,13 +43,22 @@ jobs:
                   echo "One or more file(s) in the neogame-web application has changed."
                   echo "$NEOGAME_WEB_ALL_CHANGED_FILES" | tr ' ' '\n'
 
-            - name: Run step if doc file(s) change
+            - name: Log changed files in libs/ui
               if: steps.changed-files-yaml.outputs.ui_any_changed == 'true'
               env:
                   UI_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.ui_all_changed_files }}
               run: |
                   echo "One or more file(s) in the ui library has changed."
                   echo "$UI_ALL_CHANGED_FILES" | tr ' ' '\n'
+
+    logweb:
+        runs-on: ubuntu-latest
+        needs: [changed-files]
+        steps:
+            - name: log value
+              run: |
+                  echo ${{ needs.changed-files-yaml.outputs.neogame-web_any_changed }}
+                  echo ${{ needs.changed-files-yaml.outputs.ui_any_changed }}
 
     neogame-web:
         name: Run Neogame-CI
