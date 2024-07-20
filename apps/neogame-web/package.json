@@ -2,22 +2,28 @@
     "name": "@ssromp/neogame",
     "version": "0.1.0",
     "description": "",
+    "type": "module",
     "scripts": {
         "start": "vite",
+        "lint": "npx eslint --max-warnings 0 .",
+        "format": "npx prettier --write --config ../../.prettierrc .",
         "build": "vite build",
         "serve": "vite preview"
     },
     "private": true,
     "license": "MIT",
     "devDependencies": {
-        "sass": "catalog:",
-        "solid-devtools": "catalog:",
-        "typescript": "catalog:",
-        "vite": "catalog:",
-        "vite-plugin-solid": "catalog:"
+        "@eslint/js": "catalog:eslint-official",
+        "@typescript-eslint/parser": "catalog:eslint-community",
+        "eslint-plugin-solid": "catalog:solid-community",
+        "globals": "catalog:eslint-official",
+        "solid-devtools": "catalog:solid-official",
+        "typescript": "catalog:typescript-official",
+        "vite": "catalog:vite-official",
+        "vite-plugin-solid": "catalog:solid-official"
     },
     "dependencies": {
-        "solid-js": "catalog:",
-        "@ssromp/ui": "workspace:"
+        "@ssromp/ui": "workspace:",
+        "solid-js": "catalog:solid-official"
     }
 }

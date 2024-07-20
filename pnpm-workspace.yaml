@@ -2,18 +2,68 @@ packages:
     - 'apps/*'
     - 'libs/*'
 
-catalog:
-    '@storybook/addon-essentials': '8.0.5'
-    '@storybook/addon-interactions': '8.0.5'
-    '@storybook/addon-links': '8.0.5'
-    '@storybook/blocks': '8.0.5'
-    '@storybook/html': '8.0.5'
-    'sass': '^1.70.0'
-    'solid-devtools': '^0.29.2'
-    'solid-js': '^1.8.11'
-    'storybook': '^8.2.4'
-    'storybook-solidjs': '^1.0.0-beta.2'
-    'storybook-solidjs-vite': '^1.0.0-beta.2'
-    'typescript': '^5.3.3'
-    'vite': '^5.0.11'
-    'vite-plugin-solid': '^2.8.2'
+# Grouped by technology
+# [name]-official: first party dependency safe to use
+# [name]-community: collective or with enough contributors/support
+# [name]-unsure: very new or not enough contributors/support
+
+catalogs:
+    # Web Framework
+    solid-official:
+        'solid-js': '^1.8.11'
+        'solid-devtools': '^0.29.2'
+        'vite-plugin-solid': '^2.8.2'
+    solid-community:
+        'eslint-plugin-solid': '^0.14.1'
+
+    # Design System
+    storybook-official:
+        '@storybook/addon-essentials': '^8.2.4'
+        '@storybook/addon-interactions': '^8.2.4'
+        '@storybook/addon-links': '^8.2.4'
+        '@storybook/blocks': '^8.2.4'
+        '@storybook/docs-tools': '^8.2.4'
+        '@storybook/testing-library': '^0.2.2'
+        'storybook': '^8.2.4'
+        'storybook-solidjs': '^1.0.0-beta.2'
+        'storybook-solidjs-vite': '^1.0.0-beta.2'
+
+    # Design Review
+    chromatic-official:
+        '@chromatic-com/storybook': '^1.6.1'
+
+    # Bundler
+    vite-official:
+        'vite': '^5.0.11'
+    vite-community:
+        'vite-plugin-dts': '4.0.0-beta.1'
+    vite-unsure:
+        'vite-plugin-lib-inject-css': '^2.1.1'
+
+    # Linter
+    eslint-official:
+        '@eslint/js': '^9.7.0'
+        'eslint': '^9.7.0'
+        'globals': '^15.8.0'
+    eslint-community:
+        '@typescript-eslint/parser': '^7.16.1'
+
+    # Formatter
+    prettier-official:
+        'prettier': '^3.3.3'
+
+    # Git
+    husky-official:
+        'husky': '^9.1.1'
+
+    # Utilities
+    utilities-community:
+        'glob': '^11.0.0'
+
+    # Language
+    typescript-official:
+        'typescript': '^5.3.3'
+
+    # Types definitions
+    types-community:
+        '@types/node': '^20.14.11'

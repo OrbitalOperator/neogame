@@ -5,7 +5,6 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import solidPlugin from 'vite-plugin-solid';
-import eslint from 'vite-plugin-eslint';
 
 export default defineConfig({
     server: {
@@ -17,7 +16,6 @@ export default defineConfig({
         },
     },
     plugins: [
-        eslint(),
         solidPlugin(),
         libInjectCss(),
         dts({
