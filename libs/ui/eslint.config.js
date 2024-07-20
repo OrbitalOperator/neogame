@@ -6,6 +6,9 @@ import globals from 'globals';
 const files = ['{src,lib}/**/*.{ts,tsx}'];
 
 export default [
+    {
+        ignores: ['storybook-static/*'],
+    },
     { languageOptions: { globals: globals.browser } },
     {
         files,

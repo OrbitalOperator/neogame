@@ -1,0 +1,59 @@
+name: CI
+
+on:
+    pull_request:
+        branches:
+            - 'main'
+            - 'releases/**'
+            - 'develop'
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+permissions:
+    actions: write
+    contents: read
+
+jobs:
+    changed-files:
+        runs-on: ubuntu-latest
+        name: Test changed-files
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@latest
+              with:
+                  fetch-depth: 0
+
+            - name: Get changed files in the ui lib folder
+              id: changed-files-yaml
+              uses: tj-actions/changed-files@v44
+              with:
+                  files_yaml: |
+                      neogame-web:
+                        - apps/neogame-web/**
+                      ui:
+                        - libs/ui/**
+
+            - name: Run step if test file(s) change
+              if: steps.changed-files-yaml.outputs.neogame-web_any_changed == 'true'
+              env:
+                  NEOGAME-WEB_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.neogame-web_all_changed_files }}
+              run: |
+                  echo "One or more file(s) in the neogame-web application has changed."
+                  echo "List all the files that have changed: $NEOGAME-WEB_ALL_CHANGED_FILES"
+
+            - name: Run step if doc file(s) change
+              if: steps.changed-files-yaml.outputs.ui_any_changed == 'true'
+              env:
+                  UI_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.ui_all_changed_files }}
+              run: |
+                  echo "One or more file(s) in the ui library has changed."
+                  echo "List all the files that have changed: $UI_ALL_CHANGED_FILES"
+
+#    chromatic:
+#        name: Run visual tests
+#        needs: [changed-files]
+#        if: needs.changed-files-yaml.outputs.ui_any_changed == 'true'
+#        uses: ./.github/workflows/chromatic.yml
+#        secrets: inherit

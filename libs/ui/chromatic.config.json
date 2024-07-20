@@ -1,0 +1,4 @@
+{
+    "buildScriptName": "storybook:build",
+    "storybookBaseDir": "libs/ui"
+}

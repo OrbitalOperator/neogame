@@ -14,5 +14,8 @@
         "husky": "catalog:husky-official",
         "prettier": "catalog:prettier-official",
         "eslint": "catalog:eslint-official"
+    },
+    "engines": {
+        "node": ">=20.15.0"
     }
 }
