@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Spec Files" pattern="file:*/stories.tsx||file:*.spec.ts||file:*.test.ts" />
+</component>

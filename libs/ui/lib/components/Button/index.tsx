@@ -1,4 +1,4 @@
-import {Component, mergeProps, splitProps} from 'solid-js';
+import { Component, mergeProps, splitProps } from 'solid-js';
 import styles from './styles.module.css';
 
 export interface ButtonProps {
@@ -28,18 +28,13 @@ export interface ButtonProps {
  * Primary UI component for user interaction
  */
 export const Button: Component<ButtonProps> = (props) => {
-    props = mergeProps({size: 'small' as ButtonProps['size']}, props);
-    const [local, rest] = splitProps(props, [
-        'primary',
-        'size',
-        'backgroundColor',
-        'label',
-    ]);
+    props = mergeProps({ size: 'small' as ButtonProps['size'] }, props);
+    const [local, rest] = splitProps(props, ['primary', 'size', 'backgroundColor', 'label']);
 
     return (
         <button
             {...rest}
-            type="button"
+            type='button'
             classList={{
                 [styles.storybookButtonSmall]: local.size === 'small',
                 [styles.storybookButtonMedium]: local.size === 'medium',
@@ -48,8 +43,7 @@ export const Button: Component<ButtonProps> = (props) => {
                 [styles.storybookButtonPrimary]: local.primary === true,
                 [styles.storybookButtonSecondary]: local.primary === false,
             }}
-            style={{'background-color': local.backgroundColor}}
-        >
+            style={{ 'background-color': local.backgroundColor }}>
             {local.label}
         </button>
     );

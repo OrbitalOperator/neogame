@@ -1,23 +1,23 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
-  "description": "",
-  "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "sass": "catalog:",
-    "solid-devtools": "catalog:",
-    "typescript": "catalog:",
-    "vite": "catalog:",
-    "vite-plugin-solid": "catalog:"
-  },
-  "dependencies": {
-    "solid-js": "catalog:",
-    "@ssromp/ui": "workspace:"
-  }
+    "name": "vite-template-solid",
+    "version": "0.0.0",
+    "description": "",
+    "scripts": {
+        "start": "vite",
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "sass": "catalog:",
+        "solid-devtools": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-solid": "catalog:"
+    },
+    "dependencies": {
+        "solid-js": "catalog:",
+        "@ssromp/ui": "workspace:"
+    }
 }
