@@ -54,7 +54,7 @@ jobs:
     neogame-web:
         name: Run Neogame-CI
         needs: [changed-files]
-        if: ${{ steps.changed-files-yaml.outputs.neogame-web_any_changed == 'true' || steps.changed-files-yaml.outputs.ui_any_changed == 'true' }}
+        if: ${{ needs.changed-files-yaml.outputs.neogame-web_any_changed == 'true' || needs.changed-files-yaml.outputs.ui_any_changed == 'true' }}
         uses: ./.github/workflows/neogame-web-ci.yml
         secrets: inherit
 #    chromatic:
