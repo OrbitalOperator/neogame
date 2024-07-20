@@ -2,10 +2,10 @@ packages:
     - 'apps/*'
     - 'libs/*'
 
-# Grouped by technology
-# [name]-official: first party dependency safe to use
-# [name]-community: collective or with enough contributors/support
-# [name]-unsure: very new or not enough contributors/support
+# Grouped by technology name and split under three suffixes:
+# [technology]-official: first party dependency safe to use
+# [technology]-community: collective or with enough contributors/support
+# [technology]-unsure: very new or not enough contributors/support
 
 catalogs:
     # Web Framework
