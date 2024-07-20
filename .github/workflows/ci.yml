@@ -58,14 +58,13 @@ jobs:
             - name: log value
               run: |
                   echo ${{ needs.changed-files.outputs }}
-                  echo ${{ needs.changed-files.outputs.changed-files-yaml }}
-                  echo ${{ needs.changed-files.outputs.neogame-web_changed-files-yaml }}
-                  echo ${{ needs.changed-files.outputs.ui_changed-files-yaml }}
+                  echo ${{ needs.neogame_web_changed-files-yaml.outputs.neogame_web_any_changed  }}
+                  echo ${{ needs.neogame_web_changed-files-yaml.outputs.all_changed_files }}
 
     neogame-web:
         name: Run Neogame-CI
         needs: [changed-files]
-        if: ${{ needs.changed-files-yaml.outputs.neogame-web_any_changed == 'true' || needs.changed-files-yaml.outputs.ui_any_changed == 'true' }}
+        if: ${{ needs.changed-files-yaml.outputs.neogame_web_any_changed == 'true' || needs.changed-files-yaml.outputs.ui_any_changed == 'true' }}
         uses: ./.github/workflows/neogame-web-ci.yml
         secrets: inherit
 #    chromatic:
