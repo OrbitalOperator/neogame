@@ -116,7 +116,7 @@ importers:
 
     apps/neogame-web:
         dependencies:
-            '@ssromp/ui':
+            '@oogo/ui':
                 specifier: 'workspace:'
                 version: link:../../libs/ui
             solid-js:

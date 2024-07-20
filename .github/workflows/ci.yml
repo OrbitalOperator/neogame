@@ -30,18 +30,18 @@ jobs:
               uses: tj-actions/changed-files@v44
               with:
                   files_yaml: |
-                      neogame-web:
+                      neogame_web:
                         - apps/neogame-web/**
                       ui:
                         - libs/ui/**
 
-            - name: Run step if test file(s) change
-              if: steps.changed-files-yaml.outputs.neogame-web_any_changed == 'true'
+            - name: Run neogame-ci on neogame or ui files changes
+              if: ${{ steps.changed-files-yaml.outputs.neogame_web_any_changed == 'true' || steps.changed-files-yaml.outputs.ui_any_changed == 'true' }}
               env:
-                  NEOGAME-WEB_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.neogame-web_all_changed_files }}
+                  NEOGAME_WEB_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.neogame_web_all_changed_files }}
               run: |
                   echo "One or more file(s) in the neogame-web application has changed."
-                  echo "List all the files that have changed: $NEOGAME-WEB_ALL_CHANGED_FILES"
+                  echo "$NEOGAME_WEB_ALL_CHANGED_FILES" | tr ' ' '\n'
 
             - name: Run step if doc file(s) change
               if: steps.changed-files-yaml.outputs.ui_any_changed == 'true'
@@ -49,8 +49,14 @@ jobs:
                   UI_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.ui_all_changed_files }}
               run: |
                   echo "One or more file(s) in the ui library has changed."
-                  echo "List all the files that have changed: $UI_ALL_CHANGED_FILES"
+                  echo "$UI_ALL_CHANGED_FILES" | tr ' ' '\n'
 
+    neogame-web:
+        name: Run Neogame-CI
+        needs: [changed-files]
+        if: ${{ steps.changed-files-yaml.outputs.neogame-web_any_changed == 'true' || steps.changed-files-yaml.outputs.ui_any_changed == 'true' }}
+        uses: ./.github/workflows/neogame-web-ci.yml
+        secrets: inherit
 #    chromatic:
 #        name: Run visual tests
 #        needs: [changed-files]
