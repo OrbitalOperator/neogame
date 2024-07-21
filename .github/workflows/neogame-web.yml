@@ -1,0 +1,37 @@
+name: '🤖 Continuous Integration: apps/neogame-web'
+
+on: workflow_call
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}-neogame-web
+    cancel-in-progress: true
+
+permissions:
+    actions: write
+    contents: read
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        name: 🌐 Build Neogame Web Application
+        steps:
+            - name: ⬇️ Checkout repository
+              uses: actions/checkout@v4
+
+            - uses: pnpm/action-setup@v4
+              name: ⚙️ Install pnpm
+              with:
+                  run_install: false
+
+            - uses: actions/setup-node@v4
+              name: ⎔ Setup node
+              with:
+                  node-version-file: 'package.json'
+                  cache: pnpm
+                  registry-url: https://registry.npmjs.org
+
+            - name: 📚 Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: ⚡ Build application
+              run: pnpm --filter @oogo/neogame build

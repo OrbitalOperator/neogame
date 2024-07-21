@@ -1,0 +1,45 @@
+name: '🤖 Continuous Integration: apps/ui'
+
+on: workflow_call
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}-ui
+    cancel-in-progress: true
+
+permissions:
+    actions: write
+    contents: read
+
+jobs:
+    chromatic:
+        runs-on: ubuntu-latest
+        name: 📕 Upload Storybook to Chromatic
+        steps:
+            - name: ⬇️ Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - uses: pnpm/action-setup@v4
+              name: ⚙️ Install pnpm
+              with:
+                  run_install: false
+
+            - uses: actions/setup-node@v4
+              name: ⎔ Setup node
+              with:
+                  node-version-file: 'package.json'
+                  cache: pnpm
+                  registry-url: https://registry.npmjs.org
+
+            - name: 📚 Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: ⚡ Build Storybook
+              run: pnpm --filter @oogo/ui storybook:build
+
+            - name: ⬆️ Upload to Chromatic
+              uses: chromaui/action@latest
+              with:
+                  projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+                  workingDir: libs/ui
