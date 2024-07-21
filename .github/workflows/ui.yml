@@ -1,4 +1,4 @@
-name: 'Continuous Integration: apps/ui'
+name: '🤖 Continuous Integration: apps/ui'
 
 on: workflow_call
 
@@ -13,10 +13,12 @@ permissions:
 jobs:
     chromatic:
         runs-on: ubuntu-latest
-        name: Upload Storybook to Chromatic
+        name: 📕 Upload Storybook to Chromatic
         steps:
             - name: ⬇️ Checkout repository
               uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
             - uses: pnpm/action-setup@v4
               name: ⚙️ Install pnpm

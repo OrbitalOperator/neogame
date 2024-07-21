@@ -1,4 +1,4 @@
-name: 'Continuous Integration: apps/neogame-web'
+name: '🤖 Continuous Integration: apps/neogame-web'
 
 on: workflow_call
 
@@ -13,7 +13,7 @@ permissions:
 jobs:
     build:
         runs-on: ubuntu-latest
-        name: Build Neogame Web Application
+        name: 🌐 Build Neogame Web Application
         steps:
             - name: ⬇️ Checkout repository
               uses: actions/checkout@v4
