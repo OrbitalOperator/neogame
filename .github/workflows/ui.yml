@@ -11,9 +11,9 @@ permissions:
     contents: read
 
 jobs:
-    build:
+    chromatic:
         runs-on: ubuntu-latest
-        name: Build Neogame Web Application
+        name: Upload Storybook to Chromatic
         steps:
             - name: ⬇️ Checkout repository
               uses: actions/checkout@v4

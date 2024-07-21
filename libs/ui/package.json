@@ -7,12 +7,11 @@
     "description": "ui library made of SolidJs components",
     "scripts": {
         "start": "vite",
-        "storybook": "storybook dev -p 6006",
-        "storybook:build": "storybook build",
-        "chromatic": "npx chromatic --exit-zero-on-changes",
+        "start-storybook": "storybook dev -p 6006",
+        "build": "vite build",
+        "build-storybook": "storybook build",
         "lint": "npx eslint --max-warnings 0 .",
         "format": "npx prettier --write --config ../../.prettierrc .",
-        "build": "vite build",
         "prepublishOnly": "pnpm run build"
     },
     "type": "module",
