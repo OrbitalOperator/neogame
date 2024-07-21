@@ -1,9 +1,9 @@
-name: Neogame-Web CI
+name: 'Continuous Integration: apps/neogame-web'
 
 on: workflow_call
 
 concurrency:
-    group: ${{ github.workflow }}-${{ github.ref }}-chromatic
+    group: ${{ github.workflow }}-${{ github.ref }}-neogame-web
     cancel-in-progress: true
 
 permissions:
@@ -13,26 +13,25 @@ permissions:
 jobs:
     build:
         runs-on: ubuntu-latest
-        name: Test changed-files
+        name: Build Neogame Web Application
         steps:
-            - name: Checkout repository
+            - name: ⬇️ Checkout repository
               uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
 
             - uses: pnpm/action-setup@v4
-              name: Install pnpm
+              name: ⚙️ Install pnpm
               with:
                   run_install: false
 
             - uses: actions/setup-node@v4
+              name: ⎔ Setup node
               with:
                   node-version-file: 'package.json'
                   cache: pnpm
                   registry-url: https://registry.npmjs.org
 
-            - name: Install dependencies
+            - name: 📚 Install dependencies
               run: pnpm install --frozen-lockfile
 
-            - name: Build application
+            - name: ⚡ Build application
               run: pnpm --filter @oogo/neogame build

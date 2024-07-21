@@ -1,4 +1,4 @@
-name: CI
+name: Continuous Integration
 
 on:
     pull_request:
@@ -16,20 +16,18 @@ permissions:
     contents: read
 
 jobs:
-    changed-files:
+    detect-affected:
         runs-on: ubuntu-latest
-        name: Test changed-files
+        name: Detect affected apps and libraries
         outputs:
-            should_run_neogame_web_ci: ${{ steps.changed-files-yaml.outputs.neogame_web_any_changed }}
-            should_run_ui_ci: ${{ steps.changed-files-yaml.outputs.ui_any_changed }}
+            neogame_web_affected: ${{ steps.scan.outputs.neogame_web_any_changed == 'true' || steps.scan.outputs.ui_any_changed == 'true' }}
+            ui_affected: ${{ steps.scan.outputs.ui_any_changed == 'true' }}
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
 
-            - name: Get changed files in the ui lib folder
-              id: changed-files-yaml
+            - name: Detect apps and libraries with code changes
+              id: scan
               uses: tj-actions/changed-files@v44
               with:
                   files_yaml: |
@@ -38,39 +36,16 @@ jobs:
                       ui:
                         - libs/ui/**
 
-            - name: Log changed files in apps/neogame-web
-              if: ${{ steps.changed-files-yaml.outputs.neogame_web_any_changed == 'true' || steps.changed-files-yaml.outputs.ui_any_changed == 'true' }}
-              env:
-                  NEOGAME_WEB_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.neogame_web_all_changed_files }}
-              run: |
-                  echo "One or more file(s) in the neogame-web application has changed."
-                  echo "$NEOGAME_WEB_ALL_CHANGED_FILES" | tr ' ' '\n'
-
-            - name: Log changed files in libs/ui
-              if: steps.changed-files-yaml.outputs.ui_any_changed == 'true'
-              env:
-                  UI_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.ui_all_changed_files }}
-              run: |
-                  echo "One or more file(s) in the ui library has changed."
-                  echo "$UI_ALL_CHANGED_FILES" | tr ' ' '\n'
-
-    logweb:
-        runs-on: ubuntu-latest
-        needs: [changed-files]
-        steps:
-            - name: log value
-              run: |
-                  echo "Needs context: ${{ toJson(needs) }}"
-
     neogame-web:
-        name: Run Neogame-CI
-        needs: [changed-files]
-        if: ${{ needs.changed-files.outputs.should_run_neogame_web_ci == 'true' || needs.changed-files.outputs.should_run_ui_ci == 'true' }}
-        uses: ./.github/workflows/neogame-web-ci.yml
+        name: apps/neogame-web
+        needs: [detect-affected]
+        if: ${{ needs.detect-affected.outputs.neogame_web_affected }}
+        uses: ./.github/workflows/neogame-web.yml
         secrets: inherit
-#    chromatic:
-#        name: Run visual tests
-#        needs: [changed-files]
-#        if: needs.changed-files-yaml.outputs.ui_any_changed == 'true'
-#        uses: ./.github/workflows/chromatic.yml
-#        secrets: inherit
+
+    ui:
+        name: libs/ui
+        needs: [detect-affected]
+        if: ${{ needs.detect-affected.outputs.ui_affected }}
+        uses: ./.github/workflows/ui.yml
+        secrets: inherit
