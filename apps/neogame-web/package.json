@@ -1,5 +1,5 @@
 {
-    "name": "@ssromp/neogame",
+    "name": "@oogo/neogame",
     "version": "0.1.0",
     "description": "",
     "type": "module",
@@ -23,7 +23,7 @@
         "vite-plugin-solid": "catalog:solid-official"
     },
     "dependencies": {
-        "@ssromp/ui": "workspace:",
+        "@oogo/ui": "workspace:",
         "solid-js": "catalog:solid-official"
     }
 }

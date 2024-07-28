@@ -1,14 +1,17 @@
 {
-    "name": "@ssromp/ui",
+    "name": "@oogo/ui",
     "version": "0.1.0",
-    "author": "Nicolas GORAJ",
+    "author": {
+        "name": "Nicolas GORAJ"
+    },
     "description": "ui library made of SolidJs components",
     "scripts": {
         "start": "vite",
-        "storybook": "storybook dev -p 6006",
+        "start-storybook": "storybook dev -p 6006",
+        "build": "vite build",
+        "build-storybook": "storybook build",
         "lint": "npx eslint --max-warnings 0 .",
         "format": "npx prettier --write --config ../../.prettierrc .",
-        "build": "vite build",
         "prepublishOnly": "pnpm run build"
     },
     "type": "module",
@@ -36,9 +39,10 @@
         "@storybook/addon-links": "catalog:storybook-official",
         "@storybook/blocks": "catalog:storybook-official",
         "@storybook/docs-tools": "catalog:storybook-official",
-        "@storybook/testing-library": "catalog:storybook-official",
+        "@storybook/test": "catalog:storybook-official",
         "@types/node": "catalog:types-community",
         "@typescript-eslint/parser": "catalog:eslint-community",
+        "chromatic": "catalog:chromatic-official",
         "eslint-plugin-solid": "catalog:solid-community",
         "glob": "catalog:utilities-community",
         "globals": "catalog:eslint-official",
@@ -55,7 +59,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/sassy-stack-repositories/one-more-pull.git"
+        "url": "git+ssh://git@github.com:Sun2140/neogame.git"
     },
     "keywords": [
         "vite",
@@ -65,7 +69,7 @@
         "components"
     ],
     "bugs": {
-        "url": "https://github.com/sassy-stack-repositories/one-more-pull/issues"
+        "url": "https://https://github.com/Sun2140/neogame/issues"
     },
-    "homepage": "https://github.com/sassy-stack-repositories/one-more-pull#readme"
+    "homepage": "https://https://github.com/Sun2140/neogame#readme"
 }
