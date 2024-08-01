@@ -1,0 +1,69 @@
+// import { beforeEach, describe, expect, test } from 'vitest';
+// import { Facility, FacilityProperties } from '../../domain/facility/facility';
+// import { Player, PlayerProperties } from '../../domain/player';
+// import { ResourceProperties } from '../../domain/resources';
+// import { NotEnoughResourceForUpgrade } from './errors/not-enough-resource-for-upgrade.error';
+// import { upgradeFacility, UpgradeFacilityResult } from './upgrade-facility';
+//
+// describe('UpgradeFacility', () => {
+//     const resourceProperties: ResourceProperties = {
+//         id: '1-1-1-2-2',
+//         name: 'Metal',
+//         description: 'Shiny material',
+//         quantity: 8000,
+//     };
+//
+//     const facilityProperties: FacilityProperties = {
+//         id: '1-1-1-1-1',
+//         name: 'MyFacility',
+//         level: 0,
+//         upgradeCost: 3000,
+//     };
+//
+//     const playerProperties: PlayerProperties = {
+//         id: '0-0-0-0-1',
+//         name: 'PlayerName',
+//         resources: [resourceProperties],
+//         facilities: [facilityProperties],
+//     };
+//
+//     let player: Player;
+//     let facility: Facility;
+//
+//     beforeEach(() => {
+//         player = Player.fromProperties(playerProperties);
+//         facility = player.facilities.getEntity(facilityProperties.id);
+//     });
+//
+//     test("an error is throw is the player don't have enough resource", () => {
+//         expect(() =>
+//             upgradeFacility({ player, facilityId: facilityProperties.id, playerHasEnoughResource: false }),
+//         ).toThrow(new NotEnoughResourceForUpgrade());
+//     });
+//
+//     test("it doesn't throw an error if the player have enough resource", () => {
+//         expect(() =>
+//             upgradeFacility({ player, facilityId: facilityProperties.id, playerHasEnoughResource: true }),
+//         ).not.toThrow();
+//     });
+//
+//     test('upon upgrade the facility is raised by one level', () => {
+//         expect(facility.level).toBe(0);
+//         const result: UpgradeFacilityResult = upgradeFacility({
+//             player,
+//             facilityId: facilityProperties.id,
+//             playerHasEnoughResource: true,
+//         });
+//         expect(result.updatedPlayer.facilities.getEntity(facilityProperties.id).level).toBe(1);
+//     });
+//
+//     test('upon upgrade the player is deducted the cost', () => {
+//         expect(player.resources.getEntity(resourceProperties.id).quantity).toBe(8000);
+//         const result: UpgradeFacilityResult = upgradeFacility({
+//             player,
+//             facilityId: facilityProperties.id,
+//             playerHasEnoughResource: true,
+//         });
+//         expect(result.updatedPlayer.resources.getEntity(resourceProperties.id).quantity).toBe(5000);
+//     });
+// });

@@ -1,0 +1,38 @@
+{
+    "name": "@oogo/neogame-core",
+    "version": "0.1.0",
+    "author": {
+        "name": "Nicolas GORAJ"
+    },
+    "description": "game engine logic",
+    "scripts": {
+        "start": "vite",
+        "build": "vite build",
+        "test": "vitest",
+        "lint": "npx eslint --max-warnings 0 .",
+        "format": "npx prettier --write --config ../../.prettierrc ."
+    },
+    "type": "module",
+    "private": true,
+    "main": "dist/main.js",
+    "types": "dist/main.d.ts",
+    "license": "GPL-3.0-or-later",
+    "devDependencies": {
+        "@vitest/coverage-v8": "^2.0.4",
+        "typescript": "^5.5.4",
+        "vite": "^5.3.5",
+        "vitest": "^2.0.4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com:Sun2140/neogame.git"
+    },
+    "keywords": [
+        "game",
+        "engine"
+    ],
+    "bugs": {
+        "url": "https://https://github.com/Sun2140/neogame/issues"
+    },
+    "homepage": "https://https://github.com/Sun2140/neogame#readme"
+}

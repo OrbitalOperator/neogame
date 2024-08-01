@@ -1,11 +1,13 @@
 import type { Component } from 'solid-js';
-
-import logo from './logo.svg';
 import styles from './App.module.css';
+import logo from './logo.svg';
+
+import { Button } from '@oogo/ui';
 
 const App: Component = () => {
     return (
         <div class={styles.App}>
+            <Button label='test' primary={true} />
             <header class={styles.header}>
                 <img src={logo} class={styles.logo} alt='logo' />
                 <p>
