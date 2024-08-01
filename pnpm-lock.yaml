@@ -241,6 +241,10 @@ importers:
         version: 2.10.2(@testing-library/jest-dom@6.4.5)(solid-js@1.8.18)(vite@5.3.4(@types/node@20.14.11)(sass@1.77.8)(terser@5.31.3))
 
   libs/neogame-core:
+    dependencies:
+      reflect-metadata:
+        specifier: ^0.2.0
+        version: 0.2.2
     devDependencies:
       '@vitest/coverage-v8':
         specifier: ^2.0.4
@@ -4148,7 +4152,7 @@ packages:
   ohash@1.1.3:
     resolution: {integrity: sha512-zuHHiGTYTA1sYJ/wZN+t5HKZaH23i4yI1HMwbuXm24Nid7Dv0KcuRlKoNKS9UNfAVSBlnGLcuQrnOKWOZoEGaw==}
 
-  on-finistorage@2.4.1:
+  on-finished@2.4.1:
     resolution: {integrity: sha512-oVlzkg3ENAhCk2zdv7IJwd/QUD4z2RxRwpkcGY8psCVcCYZNq4wYnVWALHM+brtuJjePWiYF/ClmuDr8Ch5+kg==}
     engines: {node: '>= 0.8'}
 
@@ -4306,7 +4310,7 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
 
-  polistorage@4.3.1:
+  polished@4.3.1:
     resolution: {integrity: sha512-OBatVyC/N7SCW/FaDHrSd+vn0o5cS855TOmYi4OkdWUMSJCET/xip//ch8xGUvtr3i44X9LVyWwQlRMTN3pwSA==}
     engines: {node: '>=10'}
 
@@ -7086,7 +7090,7 @@ snapshots:
       '@storybook/global': 5.0.0
       '@types/uuid': 9.0.8
       dequal: 2.0.3
-      polistorage: 4.3.1
+      polished: 4.3.1
       storybook: 8.3.0-alpha.2(@babel/preset-env@7.24.8(@babel/core@7.24.9))
       uuid: 9.0.1
 
@@ -7149,7 +7153,7 @@ snapshots:
       '@storybook/global': 5.0.0
       '@storybook/instrumenter': 8.3.0-alpha.2(storybook@8.3.0-alpha.2(@babel/preset-env@7.24.8(@babel/core@7.24.9)))
       '@storybook/test': 8.3.0-alpha.2(@jest/globals@29.7.0)(@types/jest@29.5.12)(jest@29.7.0(@types/node@20.14.11))(storybook@8.3.0-alpha.2(@babel/preset-env@7.24.8(@babel/core@7.24.9)))(vitest@2.0.4(@types/node@20.14.11)(sass@1.77.8)(terser@5.31.3))
-      polistorage: 4.3.1
+      polished: 4.3.1
       storybook: 8.3.0-alpha.2(@babel/preset-env@7.24.8(@babel/core@7.24.9))
       ts-dedent: 2.2.0
     transitivePeerDependencies:
@@ -7200,7 +7204,7 @@ snapshots:
       lodash: 4.17.21
       markdown-to-jsx: 7.4.7(react@18.3.1)
       memoizerific: 1.11.3
-      polistorage: 4.3.1
+      polished: 4.3.1
       react-colorful: 5.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       storybook: 8.3.0-alpha.2(@babel/preset-env@7.24.8(@babel/core@7.24.9))
       telejson: 7.2.0
@@ -8115,7 +8119,7 @@ snapshots:
       destroy: 1.2.0
       http-errors: 2.0.0
       iconv-lite: 0.4.24
-      on-finistorage: 2.4.1
+      on-finished: 2.4.1
       qs: 6.11.0
       raw-body: 2.5.2
       type-is: 1.6.18
@@ -8797,7 +8801,7 @@ snapshots:
       http-errors: 2.0.0
       merge-descriptors: 1.0.1
       methods: 1.1.2
-      on-finistorage: 2.4.1
+      on-finished: 2.4.1
       parseurl: 1.3.3
       path-to-regexp: 0.1.7
       proxy-addr: 2.0.7
@@ -8877,7 +8881,7 @@ snapshots:
       debug: 2.6.9
       encodeurl: 1.0.2
       escape-html: 1.0.3
-      on-finistorage: 2.4.1
+      on-finished: 2.4.1
       parseurl: 1.3.3
       statuses: 2.0.1
       unpipe: 1.0.0
@@ -10050,7 +10054,7 @@ snapshots:
 
   ohash@1.1.3: {}
 
-  on-finistorage@2.4.1:
+  on-finished@2.4.1:
     dependencies:
       ee-first: 1.1.1
 
@@ -10190,7 +10194,7 @@ snapshots:
 
   pluralize@8.0.0: {}
 
-  polistorage@4.3.1:
+  polished@4.3.1:
     dependencies:
       '@babel/runtime': 7.24.8
 
@@ -10476,7 +10480,7 @@ snapshots:
       http-errors: 2.0.0
       mime: 1.6.0
       ms: 2.1.3
-      on-finistorage: 2.4.1
+      on-finished: 2.4.1
       range-parser: 1.2.1
       statuses: 2.0.1
     transitivePeerDependencies:
