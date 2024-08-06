@@ -29,7 +29,7 @@ export function createEntity<T extends {}>(constructor: Constructor<T>, data: an
         }
     }
 
-    return entity;
+    return Object.freeze(entity);
 }
 
 function getFieldsMetadata<T extends {}>(entity: T): Array<PrimitiveTypedProperty | EntityTypedProperty> {

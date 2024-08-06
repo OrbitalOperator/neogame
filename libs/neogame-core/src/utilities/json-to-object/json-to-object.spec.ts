@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { describe, expect, test } from 'vitest';
 import { Data } from './decorators/data';
+import { tryCatch } from './decorators/try-catch';
 import { Type } from './decorators/type';
 import { createEntity } from './functions/create-entity';
 import { Entity } from './types/entity';
@@ -39,7 +40,7 @@ describe('Json To Object', () => {
         expect(playerResources.name).toBe('Metal');
         expect(playerResources.quantity).toBe(5000);
 
-        playerResources.quantity = 8000;
+        // playerResources.quantity = 8000;
         const updatedPlayerResources = playerResources.toJSON();
 
         expect(updatedPlayerResources).toStrictEqual({
@@ -58,5 +59,35 @@ describe('Json To Object', () => {
         expect(player.resources instanceof PlayerResources).toBe(true); // this assertion fail
         expect(player.resources.name).toBe('Metal');
         expect(player.resources.quantity).toBe(5000);
+    });
+
+    test('the whole entity is immutable', () => {
+        const player = createEntity<Player>(Player, playerProps);
+        let error;
+
+        error = tryCatch(() => {
+            player.name = 'Oogo';
+        });
+        expect((error as Error).message).toContain('Cannot assign to read only property');
+
+        error = tryCatch(() => {
+            player.age = 3000;
+        });
+        expect((error as Error).message).toContain('Cannot assign to read only property');
+
+        error = tryCatch(() => {
+            player.resources = createEntity<PlayerResources>(PlayerResources, { name: '46546456', quantity: 4684464 });
+        });
+        expect((error as Error).message).toContain('Cannot assign to read only property');
+
+        error = tryCatch(() => {
+            player.resources.name = 'trererer';
+        });
+        expect((error as Error).message).toContain('Cannot assign to read only property');
+
+        error = tryCatch(() => {
+            player.resources.quantity = 4654646464;
+        });
+        expect((error as Error).message).toContain('Cannot assign to read only property');
     });
 });
